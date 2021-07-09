@@ -5,8 +5,12 @@ from phones_media_files.phones.models import Phone
 
 
 def index(request):
+
+    phones = Phone.objects.all()
+    for phone in phones:
+        phone.selected_image = phone.phoneimage_set.filter(is_selected=True).first()              #идва автоматично от класа PhoneImage в който е ForeignKeya
     context = {
-        'phones': Phone.objects.all(),
+        'phones': phones,
         'form': PhoneForm()
     }
 
@@ -14,7 +18,7 @@ def index(request):
 
 
 def create_phone(request):
-    form = PhoneForm(request.POST)
+    form = PhoneForm(request.POST, request.FILES)
     if form.is_valid():
         form.save()
         return redirect('index')

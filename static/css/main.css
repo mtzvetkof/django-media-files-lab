@@ -7,3 +7,11 @@
     margin: 15px 0 0;
     color: purple;
 }
+
+.list img{
+    height: 50px;
+}
+
+img {
+    max-width: 100%;
+}

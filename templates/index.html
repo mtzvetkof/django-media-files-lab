@@ -11,7 +11,9 @@
 </head>
 <body>
 
-    <form action="{% url 'create phone' %}" method="POST">
+    <form action="{% url 'create phone' %}"
+          method="POST"
+          enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         <button>Create</button>
@@ -19,6 +21,11 @@
     <ul class="list">
         {%  for phone in phones %}
             <li>
+                {% if phone.selected_image %}
+                    <img src="{{ phone.selected_image.image.url }}"/>
+                {% else  %}
+                    <img src="{% static 'images/phone.jpg'%}"/>
+                {% endif %}
                 {{ phone.manufacturer }}
                 {{ phone.model }}
             </li>

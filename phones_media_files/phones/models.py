@@ -8,3 +8,13 @@ class Phone(models.Model):
     model = models.CharField(
         max_length=15,
     )
+
+
+class PhoneImage(models.Model):
+    image = models.ImageField(
+        upload_to='phones',
+    )
+    is_selected = models.BooleanField(
+        default=False,
+    )
+    phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
