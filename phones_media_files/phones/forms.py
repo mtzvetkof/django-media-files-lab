@@ -17,6 +17,7 @@ class PhoneForm(forms.ModelForm):
         if commit:
             phone_image.save()
 
+        return phone
 
     class Meta:
         model = Phone

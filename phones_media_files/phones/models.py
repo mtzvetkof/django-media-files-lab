@@ -18,3 +18,4 @@ class PhoneImage(models.Model):
         default=False,
     )
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
+
